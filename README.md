@@ -2,6 +2,8 @@
 
 Custom slash commands and workflows for building features with Claude Code.
 
+> **Using these commands in your project:** Copy the relevant file from the `commands/` folder into your project's `.claude/commands/` folder. Claude Code automatically registers any `.md` file in `.claude/commands/` as a slash command.
+
 ---
 
 ## Commands
@@ -51,6 +53,19 @@ A three-phase workflow that takes a feature idea all the way from spec to implem
 ```
 
 ### Step-by-Step
+
+**0. One-time setup**
+
+Before using `/spec` in a project for the first time:
+
+1. **Copy the command** — copy `commands/spec.md` from this repo into `.claude/commands/` at your project root. Claude Code registers any `.md` file in that folder as a slash command.
+2. **Copy the spec template** — copy `_specs/template.md` from this repo into a `_specs/` folder at your project root. The command reads this file as the base structure for every generated spec.
+
+```
+mkdir -p your-project/.claude/commands your-project/_specs
+cp commands/spec.md your-project/.claude/commands/spec.md
+cp _specs/template.md your-project/_specs/template.md
+```
 
 **1. Run `/spec`**
 
