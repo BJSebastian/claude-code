@@ -27,7 +27,7 @@ A three-phase workflow that takes a feature idea all the way from spec to implem
        │
        ▼
   ┌─────────────────────────┐
-  │  Plan Mode              │  ── Claude reads spec, drafts implementation plan
+  │  Switch to "Plan Mode"  │  ── Claude reads spec, drafts implementation plan
   │  "let's plan this spec" │
   └─────────────────────────┘
        │
@@ -82,9 +82,15 @@ Title:     Create Policy Form
 
 Claude reads the spec file, analyses the codebase, and drafts a step-by-step implementation plan. Review it, ask questions, and iterate until you're satisfied.
 
-**3. Save the Plan — `save the plan to the _plans folder`**
+**3. Save the Plan — `no, just save the plan to the _plans folder for now`**
 
-Claude saves the plan to `_plans/<slug>.md`. Plans are version-controlled alongside your code, so the whole team can review them on the branch.
+Once Claude creates the plan (*in plan mode*), Claude will prompt you with several options:
+
+1. Implement the plan
+2. Cancel
+3. Other / ask what you want to do
+
+Choose **other** and enter `no, just save the plan to the _plans folder for now`. Claude saves the plan to `_plans/<slug>.md`. Plans are version-controlled alongside your code, so the whole team can review them on the branch.
 
 **4. Implement — `let's implement this plan`**
 
