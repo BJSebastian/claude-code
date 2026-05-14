@@ -1,16 +1,23 @@
 ---
 description: Create a commit message by analyzing git diffs
-allowed-tools: Bash(git status:*), Bash(git diff --staged), Bash(git commit:*)
+allowed-tools: Bash(git commit:*), Bash(git -C:*), Bash(.claude/scripts/git-staged.sh:*)
 ---
 
 ## Context
 
-- current git status: !`git status`
-- Current git diff: !`git diff --staged`
+Staged changes across repos:
+!`.claude/scripts/git-staged.sh $ARGUMENTS`
 
 ## Your task:
 
-Analyze above staged git changes and create a commit message. Use present tense and explay "why" something has changed, not just "what" has changed.
+Analyze the staged git changes above. There may be one or multiple repositories shown.
+
+For each repository that has staged changes, propose a commit message using the format below.
+If changes span multiple repositories, provide a separate commit message for each, clearly labeled with the repo path.
+
+When committing:
+- Root repo: `git commit -m "..."`
+- Sub-directory repo: `git -C <repo_path> commit -m "..."`
 
 ## Commit types with emojis:
 Only use the following emojis:
@@ -24,7 +31,6 @@ Only use the following emojis:
 - ⚡ `perf:` - Performance
 
 ## Format:
-Use the following format for making the commit message:
 
 ```
 <emoji> <type>: <concise_description>
@@ -33,8 +39,8 @@ Use the following format for making the commit message:
 
 ## Output:
 
-1. Show summary of changes currently staged
-2. Propose commit message with appropriate emoji
+1. Show summary of staged changes (per repo if multiple)
+2. Propose commit message(s) with appropriate emoji
 3. Ask for confirmation before committing
 
 DO NOT auto-commit - wait for user approval, and only commit if the user says so.
